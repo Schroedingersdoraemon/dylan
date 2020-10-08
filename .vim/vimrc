@@ -1,0 +1,411 @@
+" __  __        __     _____ __  __          
+"|  \/  |_   _  \ \   / /_ _|  \/  |_ __ ___ 
+"| |\/| | | | |  \ \ / / | || |\/| | '__/ __|
+"| |  | | |_| |   \ V /  | || |  | | | | (__ 
+"|_|  |_|\__, |    \_/  |___|_|  |_|_|  \___|
+"        |___/                               
+"
+" 'compatible' option. 
+" /usr/share/vim/vimfiles/archlinux.vim and sourced by the call to :runtime
+" All system-wide defaults are set in $VIMRUNTIME/archlinux.vim (usually just
+" If you prefer the old-style vim functionalty, add 'runtime! vimrc_example.vim'
+" Or better yet, read /usr/share/vim/vim80/vimrc_example.vim or the vim manual
+" do it in this file (/etc/vimrc), since archlinux.vim will be overwritten
+" do not load defaults if ~/.vimrc is missing
+" everytime an upgrade of the vim packages is performed.  It is recommended to
+" make changes after sourcing archlinux.vim since it alters the value of the
+" properly set to work with the Vim-related packages.
+" you can find below.  If you wish to change any of those settings, you should
+"let skip_defaults_vim=1
+
+let mapleader = " "
+
+"===
+"=== Some keybindings
+"===
+noremap = nzz
+noremap - Nzz
+noremap <LEADER><CR> :nohlsearch<CR>
+noremap gg :1<CR>
+
+map Q :q<CR>
+map R :source $MYVIMRC<CR>
+map S :w<CR>
+
+
+
+map H 7h
+map J 7j
+map K 7k
+map L 7l
+
+noremap ; :
+vnoremap ;n :normal 
+
+noremap FW :w !sudo tee %
+
+"===
+"=== vim auto start configuration
+"===
+func! AutoConfigure()
+    " set {} auto competion for go file
+    if &filetype == 'go'
+        inoremap { {}<Esc>i<CR><Esc>ko
+    endif
+
+    " to do
+endfunc
+
+call AutoConfigure()
+
+" Copy to system clipboard
+vnoremap Y "+y
+
+"===
+"=== System settings
+"===
+set cursorline
+set relativenumber
+set number
+set showcmd
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+set list
+set listchars=tab:▸\ ,trail:▫
+
+set wildmenu
+set wrap
+set nofoldenable
+set linebreak
+"set spell
+
+set autoindent
+
+"hlsearch
+set hls
+"ignorecase
+set ic
+"incsearch
+set is
+exec "nohlsearch"
+
+set smartcase
+set modifiable
+
+syntax on
+
+set scrolloff=7
+
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
+set encoding=UTF-8
+
+filetype on
+filetype indent on
+filetype plugin on
+filetype plugin indent on
+set grepprg=grep\ -nH\ $*
+
+map sh :set nosplitright<CR>:vsplit<CR>
+map sl :set splitright<CR>:vsplit<CR>
+map sj :set splitbelow<CR>:split<CR>
+map sk :set nosplitbelow<CR>:split<CR>
+
+map <LEADER>l <C-w>l
+map <LEADER>h <C-w>h
+map <LEADER>j <C-w>j
+map <LEADER>k <C-w>k
+
+map<up> :res +5<CR>
+map<down> :res -5<CR>
+map<left> :vertical resize-5<CR>
+map<right> :vertical resize+5<CR>
+
+map tn :tabe<CR>
+map th :-tabnext<CR>
+map tl :+tabnext<CR>
+
+map sv <C-w>t<C-w>H
+"map sh <C-w>t<C-w>K
+
+"nmap <F8> :TagbarToggle<CR>
+
+runtime! archlinux.vim
+
+
+map r :call CompileRun()<CR>
+func! CompileRun()
+    exec "w"
+    if &filetype == 'c'
+        silent! exec "!clear"
+        exec "!gcc % -o %<"
+        exec "!time ./%<"
+    elseif &filetype == 'cpp'
+        silent! exec "!clear"
+        exec "!g++ % -o %<.out"
+        exec "!time ./%<.out"
+    elseif &filetype == 'java'
+        silent! exec "!clear"
+        exec "!javac %"
+        exec "!java %<"
+    elseif &filetype == 'go'
+        silent! exec "!clear"
+        exec "!go run %"
+    elseif &filetype == 'python'
+        silent! exec "!clear"
+        exec "!time python %"
+    elseif &filetype == 'html'
+        exec "!surf% &"
+    elseif &filetype == 'markdown'
+        exec "MarkdownPreview"
+    elseif &filetype == 'sh'
+        silent! exec "!clear"
+        exec "!./%"
+    endif
+endfunc
+
+
+
+" ===
+" === MarkdownPreview
+" ===
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_command_for_global = 0
+let g:mkdp_open_to_the_world = 0
+let g:mkdp_open_ip = ''
+let g:mkdp_browser = 'brave'
+let g:mkdp_echo_preview_url = 1
+"let g:mkdp_browserfunc = 'firefox'
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1
+    \ }
+let g:mkdp_markdown_css = ''
+let g:mkdp_highlight_css = ''
+let g:mkdp_port = ''
+let g:mkdp_page_title = '「${name}」'
+
+autocmd Filetype markdown inoremap ,f <Esc>/<++><CR>:nohlsearch<CR>c4l
+autocmd Filetype markdown inoremap ,F <Esc>/<++><CR>N:nohlsearch<CR>c4l
+autocmd Filetype markdown inoremap ,b **** <++><Esc>F*hi
+autocmd Filetype markdown inoremap ,d ~~~~ <++><Esc>F~hi
+autocmd Filetype markdown inoremap ,i ** <++><Esc>F*i
+"autocmd Filetype markdown inoremap ,c ```<Esc><++><Enter>```<Enter><Enter><++><Esc>4kA
+"autocmd Filetype markdown inoremap ,c ```<++><Enter><Enter>```<Esc>F<++>i
+autocmd Filetype markdown inoremap ,c ```<++><Enter>```<Esc>k$xxxxA
+autocmd Filetype markdown inoremap ,1 #<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,1 ##<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,1 ###<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,1 ####<Space><Enter><++><Esc>kA
+
+"autocmd Filetype markdown inoremap ,f <Esc>/<++><CR>:nohlsearch<CR>c4l
+"autocmd Filetype markdown inoremap ,n ---<Enter><Enter>
+"autocmd Filetype markdown inoremap ,b **** <++><Esc>F*hi
+"autocmd Filetype markdown inoremap ,s ~~~~ <++><Esc>F~hi
+"autocmd Filetype markdown inoremap ,i ** <++><Esc>F*i
+"autocmd Filetype markdown inoremap ,d `` <++><Esc>F`i
+"autocmd Filetype markdown inoremap ,c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+"autocmd Filetype markdown inoremap ,h ====<Space><++><Esc>F=hi
+"autocmd Filetype markdown inoremap ,p ![](<++>) <++><Esc>F[a
+"autocmd Filetype markdown inoremap ,a [](<++>) <++><Esc>F[a
+"autocmd Filetype markdown inoremap ,1 #<Space><Enter><++><Esc>kA
+"autocmd Filetype markdown inoremap ,2 ##<Space><Enter><++><Esc>kA
+"autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA
+"autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
+"autocmd Filetype markdown inoremap ,l --------<Enter>
+
+" Recompile suckless programs automatically
+" autocmd BufWritePost config.h !sudo make clean install
+
+" ===
+" === Python-syntax
+" ===
+let g:python_highlight_all = 1
+" let g:python_slow_sync = 0
+
+
+" ===
+" === vim-indent-guide
+" ===
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_color_change_percent = 1
+silent! unmap <LEADER>ig
+autocmd WinEnter * silent! unmap <LEADER>ig
+
+
+
+
+" ===
+" === Spelling Check
+" ===
+map <LEADER>sc :set spell!<CR>
+noremap <C-x> a<C-x>s
+inoremap <C-x> <Esc>a<C-x>s
+
+" Press ` to switch case(instead of ~)
+map ` ~
+
+" ===
+" === Dress up my vim
+" ===
+map <LEADER>c1: set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
+map <LEADER>c2: set background=light<CR>:colorscheme snazzy<CR>:AirlineTheme ayu light<CR>
+
+" ===
+" === Placeholder <++>
+" ===
+map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+
+"===
+"=== FZF settings
+"===
+noremap <C-f> :FZF<CR>
+
+"=== 
+"=== coc.nvim
+"/home
+"===
+"=== Use tab for trigger completion with characters ahead and navigate
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Highlight the symbol and its references when holding the cursor.
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+
+"===================================================================================================================================
+"if empty(glob('~/.vim/autoload/plug.vim'))
+"      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"    endif
+
+call plug#begin('~/.vim/plugged')
+"Plug 'dense-analysis/ale'
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'connorholyday/vim-snazzy'
+" Some other visual enhancement
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-airline/vim-airline'
+Plug 'ryanoasis/vim-devicons'
+Plug 'mhinz/vim-startify'
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+call plug#end()
+"===================================================================================================================================
+
+""===
+""=== UltiSnips
+""===
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+"===
+"=== coc.nvim
+"===
+let g:coc_global_extensions = ['coc-vimlsp']
+"===GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+"===Use <leader>h to show documentation in preview window.
+nnoremap <silent> <leader>d :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+"===Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+"===Remap for do codeAction of selected region
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+"===File Manager
+nnoremap <silent> ff :CocCommand explorer<CR>
+"===translation
+nnoremap <silent> tr :CocCommand translator.popup<CR>
+"=== snippets
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+"===
+"=== vim devicons
+"===
+" adding to vim-airline's tabline
+let g:webdevicons_enable_airline_tabline = 1
+" adding to vim-airline's statusline
+let g:webdevicons_enable_airline_statusline = 1
+
+let g:airline#extensions#tabline#enabled = 1
+
+
+
+"===
+"=== vim go
+"===
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_referrers_mode='gopls'
+let g:go_implements_mode='gopls'
+
+
+
+"" set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+let g:SnazzyTransparent = 1
+
+let g:PaperColor_Theme_Options = {
+    \   'theme': {
+    \     'default.dark': {
+    \       'transparent_background': 1
+    \     }
+    \   }
+    \ }
+
+colorscheme snazzy
+colorscheme PaperColor
