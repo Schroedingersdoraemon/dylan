@@ -1,0 +1,3 @@
+#!/bin/bash
+# Located in /usr/bin/xinitrcsession-helper
+exec $HOME/.xinitrc
