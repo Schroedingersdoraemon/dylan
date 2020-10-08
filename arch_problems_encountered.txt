@@ -1,0 +1,85 @@
+Sat 28 Dec 2019 02:22:49 PM CST
+Q:"No networks found" while entered "sudo wifi-menu"
+A:"rfkill" to detect whether wlan module is blocked
+
+
+
+Sat 11 Jan 2020 03:46:12 PM CST
+Q:"Annoying warning beep"
+A:"/etc/inputrc <set bell-style off> for tab completion beep switch off, <xset b off> for x windows beep switch off"
+
+( PS:updated Tue 21 Apr 2020 08:23:53 PM CST )
+A better solution in " /etc/modprobe.d/nobeep.conf"
+> blacklist pcpskr
+
+Q:"unblock bluetooth in rfkill"
+A:"<sudo rfkill unblock *(bluetooth)>"
+
+
+
+Sun 23 Feb 2020 07:44:16 PM CST
+Q:"deepin.com.qq.office"
+A:"/usr/lib/gsd-xsettings &"
+
+
+
+Sun 19 Apr 2020 10:21:44 AM CST
+(1). # ip link set WLAN up
+(2). # iwlist wlp3s0 scan | grep ESSID
+(3). # wpa_passphrase ESSID PASSWORD > INTERNET.conf
+(4). # wpa_supplicant -B -c INTERNET.conf -i wlp3s0
+(5). # dhcpcd -b
+
+
+
+Sun 12 Jul 2020 09:20:40 AM CST
+Q: matlab installation error:
+    terminate called after throwing an instance of 'std::runtime_error'
+  what():  Unable to launch the MATLABWindow application
+A: libselinux(aur)
+
+
+
+Fri 24 Jul 2020 10:18:16 PM CST
+Q: wine wechat error:
+    missing WeChatWin.dll, error code:126
+A:  lib32-libldap
+    riched20
+
+
+
+Sat 15 Aug 2020 11:48:59 PM CST
+Q: Connect to school web with encryption
+A:  1. install rp-pppoe package
+    2. # pppoe-setup
+    3. Primary DNS  202.117.112.3
+       Secondary DNS 218.30.19.40
+       #Secondary DNS 22.11.1.67
+
+
+
+Wed Aug 26 04:00:58 PM CST 2020
+Q: /usr/lib/libpango-1.0.so.0: undefined symbol: g_log_structured
+A:  1. remove the following links here:MatlabPath/R2020b/cefclient/sys/os/glnxa64 
+        libgio-2.0.so
+        libglib-2.0.so
+        libgmodule-2.0.so
+        libgobject-2.0.so
+        libgthread-2.0.so
+    2. ln -s LIBLINKS THERE
+
+
+
+Tue Sep  1 08:09:51 PM CST 2020
+Q: git unable to store user password
+A: git config credential.helper store
+
+
+
+Sun Sep 13 02:41:12 PM CST 2020
+Q: change console fonts
+A:  temporary -> /usr/share/kbd/consolefonts/
+    persistent:
+        1. /etc/vconsole.conf
+        2. FONT=ter-k32n.psf.gz
+            terminus-font
