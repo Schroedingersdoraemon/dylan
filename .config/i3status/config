@@ -1,0 +1,100 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        output_format = "i3bar"
+        colors = true
+        interval = 5
+}
+
+#order += "read_file proverb"
+order += "ipv6"
+#order += "wireless _first_"
+#order += "ethernet _first_"
+#order += "volume master"
+#order += "read_file backgrounds"
+#order += "run_watch DHCP"
+#order += "battery all"
+#order += "disk /home"
+#order += "memory"
+#order += "tztime local"
+
+ipv6 {
+    format_up = "IPv6: yes"
+    format_down = "IPv6: down"
+
+    color_good = "#02C874"
+    color_bad = "#F75000"
+}
+
+read_file proverb {
+    format = "%content              "
+    #color_good = "#ffffff"
+    color_good = "#eeeeee"
+    path = "/home/dylan/scripts/notice.txt"
+}
+
+wireless _first_ {
+        #format_up = "Wifi: (%quality at %essid) %ip"
+        #format_up = "🎆:%quality  at %essid %bitrate"
+        #format_up = "🎆: at %essid %bitrate of %frequency"
+        format_up = "%quality at %essid"
+        #format_up = "wifi:%quality at %essid %bitrate / %frequency"
+        #format_up = "wifi: stu-wlan"
+        #    
+        format_down = "wifi: down"
+
+        color_good = "#02C874"
+        color_bad = "#F75000"
+}
+
+ethernet _first_ {
+        #format_up = "E: %ip (%speed)"
+        format_up = "🌏Ethernet:%speed"
+        format_down = "Ethernet: down"
+
+        color_good = "#02C874"
+        color_bad = "#F75000"
+}
+run_watch DHCP {
+        pidfile = "/var/run/dhcpcd-wlp3s0-4.pid"
+}
+
+battery all {
+        status_chr= "🔌⚡"
+        status_bat = "🔋"
+        status_full = "🔌"
+        format = "[ %percentage %status %remaining ]"
+        threshold_type = "percentage"
+        low_threshold = 20
+        #last_full_capacity = "true"
+        #hide_seconds = "true"
+        #integer_battery_capacity = "true"
+}
+
+disk "/home" {
+        format = " %avail "
+}
+
+memory {
+        #format = "💿💻%used/%available"
+        format = "[ 💻%used/%available ]"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+volume master {
+        format = "[ ♪:%volume ]"
+        format_muted = "♪: muted (%volume)"
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+        #format = " %Y年%m月%d日 %H:%M:%S "
+}
