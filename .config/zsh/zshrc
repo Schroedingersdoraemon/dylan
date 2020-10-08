@@ -1,0 +1,5 @@
+export ZSH=/usr/share/oh-my-zsh
+source ~/.config/zsh/omzsh.zsh
+source ~/.config/zsh/aliases.zsh
+source ~/.config/zsh/env.zsh
+source ~/.config/zsh/fzf.zsh
