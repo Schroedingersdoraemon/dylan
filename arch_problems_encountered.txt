@@ -73,6 +73,7 @@ A:  1. remove the following links here:MatlabPath/R2020b/cefclient/sys/os/glnxa6
 Tue Sep  1 08:09:51 PM CST 2020
 Q: git unable to store user password
 A: git config credential.helper store
+   git config --global credential.helper store
 
 
 
