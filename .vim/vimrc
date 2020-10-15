@@ -48,9 +48,11 @@ noremap FW :w !sudo tee %
 "=== vim auto start configuration
 "===
 func! AutoConfigure()
-    " set {} auto competion for go file
     if &filetype == 'go'
+    " set {} auto competion for go file
         inoremap { {}<Esc>i<CR><Esc>ko
+    elseif &filetype == 'c'
+        inoremap ,c <Esc>ddko/*<CR><CR>/<Esc>ka<Space>
     endif
 
     " to do
