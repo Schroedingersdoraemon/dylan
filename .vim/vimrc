@@ -53,6 +53,8 @@ func! AutoConfigure()
         inoremap { {}<Esc>i<CR><Esc>ko
     elseif &filetype == 'c'
         inoremap ,c <Esc>ddko/*<CR><CR>/<Esc>ka<Space>
+    elseif &filetype == 'py'
+		set expandtab
     endif
 
     " to do
@@ -73,7 +75,7 @@ set showcmd
 
 set tabstop=4
 set shiftwidth=4
-set expandtab
+" set expandtab
 
 set list
 set listchars=tab:▸\ ,trail:▫
