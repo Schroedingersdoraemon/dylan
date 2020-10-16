@@ -84,3 +84,8 @@ A:  temporary -> /usr/share/kbd/consolefonts/
         1. /etc/vconsole.conf
         2. FONT=ter-k32n.psf.gz
             terminus-font
+
+
+Fri Oct 16 12:10:56 PM CST 2020
+Q: "read only file system protected ... (TOSHIBA)"
+A: # pacman -S ntfs-3g
