@@ -53,8 +53,8 @@ func! AutoConfigure()
         inoremap { {}<Esc>i<CR><Esc>ko
     elseif &filetype == 'c'
         inoremap ,c <Esc>ddko/*<CR><CR>/<Esc>ka<Space>
-    elseif &filetype == 'py'
-		set expandtab
+    "elseif &filetype == 'py'
+		"set expandtab
     endif
 
     " to do
