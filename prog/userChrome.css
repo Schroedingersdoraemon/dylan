@@ -2,3 +2,8 @@
 #tabbrowser-tabs, #tabbrowser-tabs arrowscrollbox { min-height: 0 !important; }
 #tabbrowser-tabs tab { height: var(--tab-min-height); }
 #tabbrowser-tabs tab:first-of-type:last-of-type { display: none !important; }
+
+/*
+ * Whenever you click inside of the URL bar (which happens automatically when you create a new tab), the bookmarks toolbar should appear.
+ */
+#nav-bar:not(:focus-within) + #PersonalToolbar:not(:hover):not(:focus-within):not([customizing]) { visibility: collapse; }
