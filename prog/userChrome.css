@@ -1,3 +1,13 @@
+/*
+ * Dylan's customized firefox hackin file
+ * 1. disabled the multiple tab bar
+ * 2. show bookmarks toolbar at new tab only
+ *
+ * Usage:
+ * 1. change directory to your firefox profile location: cd ~/.mozilla/firefox/STRING.default-release/
+ * 2. mkdir chrome
+ * 3. ln -s userChrome.css .
+ */
 #TabsToolbar { visibility: collapse !important; }
 #tabbrowser-tabs, #tabbrowser-tabs arrowscrollbox { min-height: 0 !important; }
 #tabbrowser-tabs tab { height: var(--tab-min-height); }
