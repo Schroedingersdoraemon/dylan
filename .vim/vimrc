@@ -167,6 +167,8 @@ func! CompileRun()
     elseif &filetype == 'sh'
         silent! exec "!clear"
         exec "!./%"
+	elseif &filetype == 'tex'
+		:VimtexCompile
     endif
 endfunc
 
@@ -263,8 +265,8 @@ map ` ~
 " ===
 " === Dress up my vim
 " ===
-map <LEADER>c1: set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
-map <LEADER>c2: set background=light<CR>:colorscheme snazzy<CR>:AirlineTheme ayu light<CR>
+" map <LEADER>c1: set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
+" map <LEADER>c2: set background=light<CR>:colorscheme snazzy<CR>:AirlineTheme ayu light<CR>
 
 " ===
 " === Placeholder <++>
@@ -307,22 +309,22 @@ nmap <silent> gr <Plug>(coc-references)
 "    endif
 
 call plug#begin('~/.vim/plugged')
-"Plug 'dense-analysis/ale'
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'connorholyday/vim-snazzy'
+" Plug 'connorholyday/vim-snazzy'
 " Some other visual enhancement
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'dylanaraps/wal'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
 "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'lervag/vimtex'
 call plug#end()
 "===================================================================================================================================
 
@@ -332,6 +334,19 @@ call plug#end()
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsEditSplit="vertical"
+""===
+""=== snippets
+""===
+imap <C-l> <Plug>(coc-snippets-expand)
+" Use <C-j> for select text for visual placeholder of snippet.
+"vmap <C-j> <Plug>(coc-snippets-select)
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+"let g:coc_snippet_next = '<c-j>'
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+"let g:coc_snippet_prev = '<c-k>'
+" Use <C-j> for both expand and jump (make expand higher priority.)
+"imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 "===
 "=== coc.nvim
@@ -363,17 +378,6 @@ nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<C
 nnoremap <silent> ff :CocCommand explorer<CR>
 "===translation
 nnoremap <silent> tr :CocCommand translator.popup<CR>
-"=== snippets
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 "===
 "=== vim devicons
@@ -395,13 +399,22 @@ let g:go_info_mode='gopls'
 let g:go_referrers_mode='gopls'
 let g:go_implements_mode='gopls'
 
+"===
+"=== vim-tex
+"===
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
 
 
 "" set Vim-specific sequences for RGB colors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-let g:SnazzyTransparent = 1
+" let g:SnazzyTransparent = 1
 
 let g:PaperColor_Theme_Options = {
     \   'theme': {
@@ -411,5 +424,5 @@ let g:PaperColor_Theme_Options = {
     \   }
     \ }
 
-colorscheme snazzy
+" colorscheme snazzy
 colorscheme PaperColor
