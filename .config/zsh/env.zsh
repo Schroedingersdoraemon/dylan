@@ -9,4 +9,4 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/bin:$PATH"
 
 export EDITOR="nvim"
-export WEB_BROWSER="brave"
+export WEB_BROWSER="firefox"
