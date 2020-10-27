@@ -4,9 +4,12 @@
  * 2. show bookmarks toolbar at new tab only
  *
  * Usage:
- * 1. change directory to your firefox profile location: cd ~/.mozilla/firefox/STRING.default-release/
- * 2. mkdir chrome
- * 3. ln -s userChrome.css .
+ * 1. change directory to your firefox profile location: cd ~/.mozilla/firefox/RANDOM_STRING.default-release/
+ * 2. create a directory named as chrome: mkdir chrome
+ * 3. link the profile here: ln -s userChrome.css chrome
+ * 4. open 'about:config' in firefox
+ * 5. search 'toolkit.legacyUserProfileCustomizations.stylesheets'
+ * 6. set it true
  */
 #TabsToolbar { visibility: collapse !important; }
 #tabbrowser-tabs, #tabbrowser-tabs arrowscrollbox { min-height: 0 !important; }
