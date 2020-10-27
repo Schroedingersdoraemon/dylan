@@ -43,7 +43,7 @@ export QT_IM_MODULE=fcitx5
 export XMODIFIERS="@im=fcitx5"
 fcitx5 &
 
-#-----------------------------input method
+#-----------------------------wine architecture
 export WINEARCH=win32
 
 #------------------------------window manager
