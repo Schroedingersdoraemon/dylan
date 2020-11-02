@@ -44,7 +44,9 @@ export XMODIFIERS="@im=fcitx5"
 fcitx5 &
 
 #-----------------------------wine architecture
-export WINEARCH=win32
+#export WINEARCH=win32
+#-----------------------------wine prefix
+export WINEPREFIX=~/.wine
 
 #------------------------------window manager
 #exec ~/scripts/startdwm.sh
