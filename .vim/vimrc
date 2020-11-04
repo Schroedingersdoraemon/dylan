@@ -161,7 +161,7 @@ func! CompileRun()
         silent! exec "!clear"
         exec "!time python %"
     elseif &filetype == 'html'
-        exec "!surf% &"
+        exec "!firefox % &"
     elseif &filetype == 'markdown'
         exec "MarkdownPreview"
     elseif &filetype == 'sh'
