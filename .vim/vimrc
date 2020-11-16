@@ -130,6 +130,7 @@ map<right> :vertical resize+5<CR>
 map tn :tabe<CR>
 map th :-tabnext<CR>
 map tl :+tabnext<CR>
+map tc :tabclose<CR>
 
 map bh :bprevious<CR>
 map bl :bnext<CR>
