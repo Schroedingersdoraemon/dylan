@@ -131,6 +131,11 @@ map tn :tabe<CR>
 map th :-tabnext<CR>
 map tl :+tabnext<CR>
 
+map bh :bprevious<CR>
+map bl :bnext<CR>
+map bb :buffers<CR>
+map bc :bdelete<CR>
+
 map sv <C-w>t<C-w>H
 "map sh <C-w>t<C-w>K
 
