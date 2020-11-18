@@ -134,7 +134,7 @@ map tc :tabclose<CR>
 
 map bh :bprevious<CR>
 map bl :bnext<CR>
-map bb :buffers<CR>
+map bu :buffers<CR>
 map bc :bdelete<CR>
 
 map sv <C-w>t<C-w>H
