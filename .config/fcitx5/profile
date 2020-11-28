@@ -18,12 +18,6 @@ Name=pinyin
 # Layout
 Layout=
 
-[Groups/0/Items/2]
-# Name
-Name=wbx
-# Layout
-Layout=
-
 [GroupOrder]
 0=Default
 

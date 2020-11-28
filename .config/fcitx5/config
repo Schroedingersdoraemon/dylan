@@ -7,6 +7,8 @@ AltTriggerKeys=
 EnumerateForwardKeys=
 # Enumerate Input Method Backward
 EnumerateBackwardKeys=
+# Skip first input method while enumerating
+EnumerateSkipFirst=False
 # Enumerate Input Method Group Forward
 EnumerateGroupForwardKeys=
 # Enumerate Input Method Group Backward
@@ -33,6 +35,9 @@ DeactivateKeys=
 [Hotkey/NextCandidate]
 0=Tab
 
+[Hotkey/TogglePreedit]
+0=Control+Alt+P
+
 [Behavior]
 # Active By Default
 ActiveByDefault=False
@@ -48,4 +53,6 @@ DefaultPageSize=5
 EnabledAddons=
 # Force Disabled Addons
 DisabledAddons=
+# Preload input method to be used by default
+PreloadInputMethod=True
 
