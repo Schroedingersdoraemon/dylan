@@ -1,33 +1,40 @@
 [Hotkey]
 # Enumerate when press trigger key repeatedly
-EnumerateWithTriggerKeys=True
-# Temporally switch between first and current Input Method
-AltTriggerKeys=
-# Enumerate Input Method Forward
-EnumerateForwardKeys=
-# Enumerate Input Method Backward
-EnumerateBackwardKeys=
+EnumerateWithTriggerKeys=False
 # Skip first input method while enumerating
 EnumerateSkipFirst=False
-# Enumerate Input Method Group Forward
-EnumerateGroupForwardKeys=
-# Enumerate Input Method Group Backward
-EnumerateGroupBackwardKeys=
-# Activate Input Method
-ActivateKeys=
-# Deactivate Input Method
-DeactivateKeys=
 
 [Hotkey/TriggerKeys]
 0=Shift+space
+1=Zenkaku_Hankaku
+2=Hangul
+
+[Hotkey/AltTriggerKeys]
+0=Shift_L
+
+[Hotkey/EnumerateForwardKeys]
+0=Control+Shift_L
+
+[Hotkey/EnumerateBackwardKeys]
+0=Control+Shift_R
+
+[Hotkey/EnumerateGroupForwardKeys]
+0=Super+space
+
+[Hotkey/EnumerateGroupBackwardKeys]
+0=Shift+Super+space
+
+[Hotkey/ActivateKeys]
+0=Hangul_Hanja
+
+[Hotkey/DeactivateKeys]
+0=Hangul_Romaja
 
 [Hotkey/PrevPage]
 0=Up
-1=minus
 
 [Hotkey/NextPage]
 0=Down
-1=equal
 
 [Hotkey/PrevCandidate]
 0=Shift+Tab
@@ -43,6 +50,8 @@ DeactivateKeys=
 ActiveByDefault=False
 # Share Input State
 ShareInputState=No
+# Show preedit in application
+PreeditEnabledByDefault=True
 # Show Input Method Information when switch input method
 ShowInputMethodInformation=True
 # Show Input Method Information when changing focus
