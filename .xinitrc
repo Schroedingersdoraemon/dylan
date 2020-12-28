@@ -38,11 +38,11 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 #wmname LG3D
 
 #-----------------------------input method
-export GTK_IM_MODULE=fcitx5
-export QT_IM_MODULE=fcitx5
-export XIM_PROGRAM=fcitx5
-export XMODIFIERS="@im=fcitx5"
-fcitx5 &
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XIM_PROGRAM=fcitx
+export XMODIFIERS="@im=fcitx"
+fcitx &
 
 #-----------------------------wine architecture
 export WINEARCH=win64
