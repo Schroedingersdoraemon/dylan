@@ -86,7 +86,14 @@ A:  temporary -> /usr/share/kbd/consolefonts/
             terminus-font
 
 
+
 Fri Oct 16 12:10:56 PM CST 2020
 Q1: "read only file system protected ... (TOSHIBA)"
 Q2: pcmanfm dual system windows file
 A: # pacman -S ntfs-3g
+
+
+
+Thu Dec 31 11:49:17 PM CST 2020
+Q: no Chinese character input in netease-cloud-music
+A: ln -sf /usr/lib/libgtk-x11-2.0.so.0 /opt/netease/netease-cloud-music/libs
