@@ -11,3 +11,5 @@ export PATH="$PATH:/home/dylan/prog/flutter/bin"
 
 export EDITOR="nvim"
 export WEB_BROWSER="firefox"
+
+eval "$(zoxide init zsh)"
