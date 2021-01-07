@@ -10,13 +10,16 @@ alias n='neofetch'
 alias no='neofetch --ascii_distro'
 alias s='neofetch --ascii_distro gentoo'
 
+#----------pacman----------
+alias Syy='sudo pacman -Syy'
+alias Syyu='sudo pacman -Syyu'
+alias Syu='sudo pacman -Syu'
 alias Ss='pacman -Ss'
 alias S='sudo pacman -S'
 alias Rnsc='sudo pacman -Rnsc'
 alias Ql='pacman -Ql'
 alias Qi='pacman -Qi'
-alias Syyu='sudo pacman -Syyu'
-alias Syu='sudo pacman -Syu'
+
 alias conda_activate='source ~/.config/zsh/conda_activate.zsh'
 alias wine32='WINEARCH=win32 WINEPREFIX=~/.wine32 wine'
 alias zo='zoxide'
