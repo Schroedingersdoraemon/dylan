@@ -19,6 +19,7 @@ alias S='sudo pacman -S'
 alias Rnsc='sudo pacman -Rnsc'
 alias Ql='pacman -Ql'
 alias Qi='pacman -Qi'
+alias Qs='pacman -Qs'
 
 alias conda_activate='source ~/.config/zsh/conda_activate.zsh'
 alias wine32='WINEARCH=win32 WINEPREFIX=~/.wine32 wine'
