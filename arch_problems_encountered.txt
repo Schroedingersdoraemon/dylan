@@ -97,3 +97,19 @@ A: # pacman -S ntfs-3g
 Thu Dec 31 11:49:17 PM CST 2020
 Q: no Chinese character input in netease-cloud-music
 A: ln -sf /usr/lib/libgtk-x11-2.0.so.0 /opt/netease/netease-cloud-music/libs
+
+
+
+Tue Jan 26 09:58:01 PM CST 2021
+Q: csgo Chinese fonts
+A: nvim ~/SteamLibrary/steamapps/common/Counter-Strike Global Offensive/csgo/panorama/fonts/conf.d/non_latin..
+```
+<match target="pattern">
+	<test qual="any" name="family">
+		<string>Helvetica</string>
+	</test>
+	<edit name="family" mode="assign">
+		<string>WenQuanYi Zen Hei</string>
+	</edit>
+</match>
+```
