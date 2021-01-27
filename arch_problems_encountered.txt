@@ -102,6 +102,7 @@ A: ln -sf /usr/lib/libgtk-x11-2.0.so.0 /opt/netease/netease-cloud-music/libs
 
 Tue Jan 26 09:58:01 PM CST 2021
 Q: csgo Chinese fonts
+A: env LANG=zh_CN.UTF-8 steam
 A: nvim ~/SteamLibrary/steamapps/common/Counter-Strike Global Offensive/csgo/panorama/fonts/conf.d/non_latin..
 ```
 <match target="pattern">
