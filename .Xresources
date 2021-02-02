@@ -1,0 +1,10 @@
+xterm*faceName:SauceCodePro Nerd Font Mono:antialias=True:pixelsize=28
+xterm*faceNameDoublesize:KaiTi:antialias=True:pixelsize=28
+ 
+Xterm*locale:zh_CN.UTF-8
+XTerm*background:black
+XTerm*foreground:rgb:b2/b2/b2
+XTerm*selectToClipboard:true
+
+XTerm.termName: xterm-256color
+XTerm.vt100.metaSendsEscape: true
