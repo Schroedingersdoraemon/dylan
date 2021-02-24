@@ -114,3 +114,5 @@ A: nvim ~/SteamLibrary/steamapps/common/Counter-Strike Global Offensive/csgo/pan
 	</edit>
 </match>
 ```
+
+-worldwide -high -nojoy -processheep -preload -d3d9ex -novid prime-run
