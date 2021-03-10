@@ -116,3 +116,9 @@ A: nvim ~/SteamLibrary/steamapps/common/Counter-Strike Global Offensive/csgo/pan
 ```
 
 -worldwide -high -nojoy -processheep -preload -d3d9ex -novid prime-run
+
+
+
+Wed Mar 10 10:38:13 AM CST 2021
+Q: Dual System time asynchronous
+A: Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1
