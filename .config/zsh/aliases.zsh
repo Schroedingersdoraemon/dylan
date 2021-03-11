@@ -25,3 +25,5 @@ alias conda_activate='source ~/.config/zsh/conda_activate.zsh'
 alias wine32='WINEARCH=win32 WINEPREFIX=~/.wine32 wine'
 alias winecn='env LANG=zh_CN.UTF-8 wine'
 alias zo='zoxide'
+
+alias zfw='python ~/prog/xidian-scripts/Python/get_network_usage.py'
