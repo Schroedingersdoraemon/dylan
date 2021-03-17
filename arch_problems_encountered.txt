@@ -122,3 +122,17 @@ A: nvim ~/SteamLibrary/steamapps/common/Counter-Strike Global Offensive/csgo/pan
 Wed Mar 10 10:38:13 AM CST 2021
 Q: Dual System time asynchronous
 A: Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1
+
+
+
+Wed Mar 17 04:57:31 PM CST 2021
+Q: How to download part of a large git repository?
+A:
+```
+	git init <repo>
+	cd <repo>
+	git remote add origin <url>
+	git config core.sparsecheckout true
+	echo "match/pattern/*" >> .git/info/sparse-checkout
+	git pull --depth=1 origin master
+```
