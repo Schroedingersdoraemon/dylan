@@ -27,3 +27,5 @@ alias winecn='env LANG=zh_CN.UTF-8 wine'
 alias zo='zoxide'
 
 alias zfw='python ~/prog/xidian-scripts/Python/get_network_usage.py'
+
+alias assconverter='danmaku2ass -s 500x500 -fn "WenQuanYi Micro Hei" -fs 25 -a 0.68 -dm 9 -ds 9'
