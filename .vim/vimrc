@@ -177,6 +177,8 @@ func! CompileRun()
         exec "!./%"
 	elseif &filetype == 'tex'
 		:VimtexCompile
+		":CocCommand latex.Build
+		":CocCommand latex.ForwardSearch
     endif
 endfunc
 
@@ -316,6 +318,7 @@ nmap <silent> gr <Plug>(coc-references)
 "        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 "    endif
 
+
 call plug#begin('~/.vim/plugged')
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -382,10 +385,38 @@ function! s:cocActionsOpenFromSelected(type) abort
 endfunction
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+
 "===File Manager
 nnoremap <silent> ff :CocCommand explorer<CR>
+
 "===translation
 nnoremap <silent> tr :CocCommand translator.popup<CR>
+
+"===
+"=== coc-pyright
+"===
+nnoremap <silent> proi :CocCommand pyright.organizeimports<CR>
+
+"===
+"=== coc-highlight
+"===
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+"===
+"=== coc-texlab
+"===
+"===
+"=== vim-tex
+"===
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+
+
+
 
 "===
 "=== vim devicons
@@ -407,22 +438,11 @@ let g:go_info_mode='gopls'
 let g:go_referrers_mode='gopls'
 let g:go_implements_mode='gopls'
 
-"===
-"=== vim-tex
-"===
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-
 
 
 "" set Vim-specific sequences for RGB colors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-" let g:SnazzyTransparent = 1
 
 let g:PaperColor_Theme_Options = {
     \   'theme': {
@@ -432,5 +452,4 @@ let g:PaperColor_Theme_Options = {
     \   }
     \ }
 
-" colorscheme snazzy
 colorscheme PaperColor
