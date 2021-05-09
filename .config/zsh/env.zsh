@@ -8,7 +8,6 @@ export LD_LIBRARY_PATH="/usr/lib:$LD_LIBRARY_PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/bin:$PATH"
 export PATH="/home/dylan/.local/bin:$PATH"
-export PATH="$PATH:/home/dylan/prog/flutter/bin"
 
 export EDITOR="nvim"
 export WEB_BROWSER="firefox"
