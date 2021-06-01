@@ -332,7 +332,6 @@ Plug 'dylanaraps/wal'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
