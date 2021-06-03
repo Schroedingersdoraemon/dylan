@@ -384,7 +384,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'dylanaraps/wal'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/indentpython.vim'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
@@ -410,7 +410,7 @@ let g:UltiSnipsEditSplit="vertical"
 "===
 "=== coc-python
 "===
-nnoremap <c-p> :CocCommand python.setInterpreter<CR>
+"nnoremap <c-p> :CocCommand python.setInterpreter<CR>
 
 "===
 "=== coc-snippets
