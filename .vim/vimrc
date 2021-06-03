@@ -32,8 +32,6 @@ map Q :q<CR>
 map R :source $MYVIMRC<CR>
 map S :w<CR>
 
-
-
 map H 7h
 map J 7j
 map K 7k
@@ -103,7 +101,7 @@ set modifiable
 
 syntax on
 
-set scrolloff=7
+set scrolloff=3
 
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set encoding=UTF-8
@@ -177,8 +175,8 @@ func! CompileRun()
     elseif &filetype == 'sh'
         silent! exec "!clear"
         exec "!./%"
-	elseif &filetype == 'tex'
-		:VimtexCompile
+	"elseif &filetype == 'tex'
+		":VimtexCompile
 		":CocCommand latex.Build
 		":CocCommand latex.ForwardSearch
     endif
@@ -221,35 +219,24 @@ autocmd Filetype markdown inoremap ,i ** <++><Esc>F*i
 "autocmd Filetype markdown inoremap ,c ```<++><Enter><Enter>```<Esc>F<++>i
 autocmd Filetype markdown inoremap ,c ```<++><Enter>```<Esc>k$xxxxA
 autocmd Filetype markdown inoremap ,1 #<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ,1 ##<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ,1 ###<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ,1 ####<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,2 ##<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,l --------<Enter>
 
-"autocmd Filetype markdown inoremap ,f <Esc>/<++><CR>:nohlsearch<CR>c4l
 "autocmd Filetype markdown inoremap ,n ---<Enter><Enter>
-"autocmd Filetype markdown inoremap ,b **** <++><Esc>F*hi
 "autocmd Filetype markdown inoremap ,s ~~~~ <++><Esc>F~hi
 "autocmd Filetype markdown inoremap ,i ** <++><Esc>F*i
 "autocmd Filetype markdown inoremap ,d `` <++><Esc>F`i
-"autocmd Filetype markdown inoremap ,c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
 "autocmd Filetype markdown inoremap ,h ====<Space><++><Esc>F=hi
 "autocmd Filetype markdown inoremap ,p ![](<++>) <++><Esc>F[a
 "autocmd Filetype markdown inoremap ,a [](<++>) <++><Esc>F[a
-"autocmd Filetype markdown inoremap ,1 #<Space><Enter><++><Esc>kA
-"autocmd Filetype markdown inoremap ,2 ##<Space><Enter><++><Esc>kA
-"autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA
-"autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
-"autocmd Filetype markdown inoremap ,l --------<Enter>
-
-" Recompile suckless programs automatically
-" autocmd BufWritePost config.h !sudo make clean install
 
 " ===
 " === Python-syntax
 " ===
 let g:python_highlight_all = 1
 " let g:python_slow_sync = 0
-
 
 " ===
 " === vim-indent-guide
@@ -260,9 +247,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_color_change_percent = 1
 silent! unmap <LEADER>ig
 autocmd WinEnter * silent! unmap <LEADER>ig
-
-
-
 
 " ===
 " === Spelling Check
@@ -293,15 +277,24 @@ noremap <C-f> :FZF<CR>
 "===
 "=== coc.nvim
 "===
+let g:coc_global_extensions = [
+	\'coc-translator',
+	\'coc-marketplace',
+	\'coc-highlight',
+	\'coc-explorer',
+	\'coc-calc',
+	\'coc-vimlsp',
+	\'coc-jedi',
+	\'coc-texlab',
+	\'coc-json',
+	\'coc-clangd']
+
 " TextEdit might fail if hidden is not set. (edit with buffer not saved)
 set hidden
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
-
-let g:coc_global_extensions = [
-	\'coc-vimlsp']
 
 "=== Use tab for trigger completion with characters ahead and navigate
 inoremap <silent><expr> <TAB>
@@ -330,7 +323,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 "===Use <leader>h to show documentation in preview window.
-nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
+nnoremap <silent> <leader>d :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -346,8 +339,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
@@ -390,7 +383,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
 "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'lervag/vimtex'
+"Plug 'lervag/vimtex'
 call plug#end()
 "===================================================================================================================================
 
@@ -411,6 +404,14 @@ let g:UltiSnipsEditSplit="vertical"
 "=== coc-python
 "===
 "nnoremap <c-p> :CocCommand python.setInterpreter<CR>
+"
+"===
+"=== coc-prettier
+"===
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 "===
 "=== coc-snippets
@@ -447,11 +448,11 @@ endif
 "===
 "=== vim-tex
 "===
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=2
-let g:tex_conceal='abdmg'
+"let g:tex_flavor='latex'
+"let g:vimtex_view_method='zathura'
+"let g:vimtex_quickfix_mode=0
+"set conceallevel=2
+"let g:tex_conceal='abdmg'
 
 "===
 "=== vim devicons
