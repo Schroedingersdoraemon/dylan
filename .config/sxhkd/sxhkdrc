@@ -37,7 +37,7 @@ XF86AudioNext
 
 # mute volume
 XF86AudioMute
-	/usr/bin/amixer set Master toggle; kill -36 $(pidof dwmblocks)
+	/usr/bin/amixer -q set Master toggle; kill -36 $(pidof dwmblocks)
 # lower volume
 XF86AudioLowerVolume
 	/usr/bin/amixer -qM set Master 5%- umute; kill -36 $(pidof dwmblocks)
