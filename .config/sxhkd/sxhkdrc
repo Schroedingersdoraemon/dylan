@@ -1,0 +1,68 @@
+# emoji select
+alt + e
+	sh $HOME/prog/dwm/functions/emoji.sh
+
+# desktop entry of dmenu
+alt + a
+	sh $HOME/prog/dwm/functions/desktop.sh
+
+# rofi -show drun
+alt + r
+	rofi -show drun
+
+# cmus command
+super + shift + m
+	st -c cmus cmus; kill -35 $(pidof dwmblocks)
+
+# shot full window
+Print
+	flameshot full -p ~/screenshots
+# maim selected window
+ctrl + Print
+	maim -B -i $(xdotool getactivewindow) ~/Pictures/screenshots/$(date +%F_%H-%M).png
+	# maim -s | convert - \( +clone -background black -shadow 80x3+5+5 \) +swap -background none -layers merge +repage ~/Pictures/screenshots/$(date +%F_%H-%M).png ;;
+# flameshot gui
+shift + Print
+	flameshot gui
+
+# play
+XF86AudioPlay
+	$HOME/prog/dwm/functions/music_control.sh pause; kill -35 $(pidof dwmblocks)
+# prev
+XF86AudioPrev
+	$HOME/prog/dwm/functions/music_control.sh prev; kill -35 $(pidof dwmblocks)
+# next
+XF86AudioNext
+	$HOME/prog/dwm/functions/music_control.sh next; kill -35 $(pidof dwmblocks)
+
+# mute volume
+XF86AudioMute
+	/usr/bin/amixer set Master toggle; kill -36 $(pidof dwmblocks)
+# lower volume
+XF86AudioLowerVolume
+	/usr/bin/amixer -qM set Master 5%- umute; kill -36 $(pidof dwmblocks)
+# louder volume
+XF86AudioRaiseVolume
+	/usr/bin/amixer -qM set Master 5%+ umute; kill -36 $(pidof dwmblocks)
+
+# fn key: search
+# XF86Search
+	
+
+# brighter
+XF86MonBrightnessUp
+	xbacklight -inc 10; kill -38 $(pidof dwmblocks)
+# dimmer
+XF86MonBrightnessDown
+	xbacklight -dec 10; kill -38 $(pidof dwmblocks)
+
+# lock the screen
+super + ctrl + l
+	slock
+
+# clipboard
+ctrl + Insert
+	notify-send "📋 Clipboard contents:\"\"$(xclip -o -selection clipboard)"
+# primary
+shift + Insert
+	notify-send "📋 Primary contents:\"\"$(xclip -o -selection primary)"
