@@ -66,3 +66,7 @@ ctrl + Insert
 # primary
 shift + Insert
 	notify-send "📋 Primary contents:\"\"$(xclip -o -selection primary)"
+
+# xf86-search
+XF86Search
+	pcmanfm
