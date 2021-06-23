@@ -140,8 +140,10 @@ A:
 
 
 Sun May  9 03:31:44 PM CST 2021
-Q: deepfly binding for DDnet
+Q: deepfly binding for DDnet, m for music emote
 A:
 ```
 bind up "bind mouse1 \"+fire; +toggle cl_dummy_hammer 1 0\""
 bind down "bind mouse1 \"+fire""
+bind m "emote 5"
+```
