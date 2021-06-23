@@ -1,3 +1,7 @@
+# configuration update
+super + control + r
+	killall sxhkd; setsid sxhkd
+
 # emoji select
 alt + e
 	sh $HOME/prog/dwm/functions/emoji.sh
