@@ -73,7 +73,7 @@ shift + Insert
 
 # xf86-search
 XF86Search
-	pcmanfm
+	dolphin
 # ranger
 ctrl + XF86Search
 	st -e ranger
