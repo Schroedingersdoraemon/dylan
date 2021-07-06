@@ -152,8 +152,8 @@ func! CompileRun()
     exec "w"
     if &filetype == 'c'
         silent! exec "!clear"
-        exec "!gcc % -o %<"
-        exec "!time ./%<"
+        exec "!gcc % -o %<.o"
+        exec "!time ./%<.o"
     elseif &filetype == 'cpp'
         silent! exec "!clear"
         exec "!g++ % -o %<.out"
