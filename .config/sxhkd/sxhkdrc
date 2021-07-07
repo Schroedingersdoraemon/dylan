@@ -73,7 +73,7 @@ shift + Insert
 
 # xf86-search
 XF86Search
-	dolphin
+	dolphin > /dev/null 2>&1
 # ranger
 ctrl + XF86Search
 	st -e ranger
