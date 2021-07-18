@@ -2,6 +2,7 @@ import os
 import sys
 import logging
 import getpass
+import datetime
 
 from hashlib import md5
 
@@ -43,7 +44,8 @@ def main():
     handler.banner = "pyftpdlib based ftpd ready."
 
     # changing log line prefix
-    handler.log_prefix = 'XXX [%(username)s]@%(remote_ip)s'
+    current_time = datetime.datetime.now().strftime('%m-%d %H:%M:%S')
+    handler.log_prefix = current_time + ' [%(username)s]@%(remote_ip)s'
 
     logging.basicConfig(filename='/var/log/pyftpd/pyftpd.log', level=logging.INFO)
 
